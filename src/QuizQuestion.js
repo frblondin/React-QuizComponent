@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Chip from '@material-ui/core/Chip';
 import QuizQuestionButton from './QuizQuestionButton.js'
 
 class QuizQuestion extends Component {
@@ -17,16 +18,14 @@ class QuizQuestion extends Component {
         return (
             <main>
                 <section>
-                    <p>{this.props.quiz_question.instruction_text}</p>
+                    <Chip label={this.props.quiz_question.instruction_text}/>
                 </section>
                 <section className="buttons">
-                    <ul>
-                        {this.props.quiz_question.answer_options.map((answer_option, index) => {
-                            return <QuizQuestionButton key={index}
-                                                       button_text={answer_option}
-                                                       clickHandler={this.handleClick.bind(this)}/>
-                        })}
-                    </ul>
+                    {this.props.quiz_question.answer_options.map((answer_option, index) => {
+                        return <QuizQuestionButton key={index}
+                                                    button_text={answer_option}
+                                                    clickHandler={this.handleClick.bind(this)}/>
+                    })}
                 </section>
                 {this.state.incorrectAnswer ? <div className='error'>Sorry, that's not right</div> : null }
             </main>

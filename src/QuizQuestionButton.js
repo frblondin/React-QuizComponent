@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from '@material-ui/core/Button';
 
 class QuizQuestionButton extends Component {
     handleClick() {
@@ -6,9 +7,11 @@ class QuizQuestionButton extends Component {
     }
     render() {
         return (
-            <li><button onClick={this.handleClick.bind(this)}>
+            <Button onClick={this.handleClick.bind(this)}
+                        variant="outlined"
+                        color="primary">
                 {this.props.button_text}
-            </button></li>
+            </Button>
         )
     }
 }
